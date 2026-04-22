@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
 import { loginStart, loginSuccess, loginFailure } from '../store/slices/authSlice';
-import axiosInstance from '../utils/axios';
+import { loginApi } from '../api';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -18,7 +18,7 @@ const Login = () => {
     
     try {
       // Example API call to login endpoint
-      const response = await axiosInstance.post('/auth/login', {
+      const response = await loginApi({
         email,
         password,
       });

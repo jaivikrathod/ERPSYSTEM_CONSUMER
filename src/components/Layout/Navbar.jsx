@@ -1,6 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../store/slices/authSlice';
+import { ROUTE_PATHS } from '../../routes/routePaths';
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -9,7 +10,7 @@ const Navbar = () => {
 
   const handleLogout = () => {
     dispatch(logout());
-    navigate('/login');
+    navigate(ROUTE_PATHS.login);
   };
 
   return (
@@ -18,7 +19,7 @@ const Navbar = () => {
         <div className="flex justify-between h-16">
           <div className="flex">
             <div className="flex-shrink-0 flex items-center">
-              <Link to="/dashboard" className="text-xl font-bold text-indigo-600">
+              <Link to={ROUTE_PATHS.dashboard} className="text-xl font-bold text-indigo-600">
                 TaskApp
               </Link>
             </div>
@@ -34,13 +35,13 @@ const Navbar = () => {
             ) : (
               <div className="space-x-4">
                 <Link
-                  to="/login"
+                  to={ROUTE_PATHS.login}
                   className="text-gray-500 hover:text-gray-700"
                 >
                   Login
                 </Link>
                 <Link
-                  to="/register"
+                  to={ROUTE_PATHS.register}
                   className="px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
                   Register

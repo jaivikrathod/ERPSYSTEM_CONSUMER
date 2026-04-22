@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import axiosInstance from '../utils/axios';
+import { getTasksApi } from '../api';
 
 const Dashboard = () => {
   const { user } = useSelector((state) => state.auth);
@@ -12,7 +12,7 @@ const Dashboard = () => {
     try {
       setLoading(true);
       // Example authorized API call
-      const response = await axiosInstance.get('/tasks');
+      const response = await getTasksApi();
       setTasks(response.data.data || []);
       setError('');
     } catch (err) {
@@ -26,7 +26,7 @@ const Dashboard = () => {
   };
 
   useEffect(() => {
-    fetchTasks();
+    // fetchTasks();
   }, []);
 
   return (

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import api from '../utils/api';
+import api from '../api/client';
 
 const SprintList = () => {
     const [sprints, setSprints] = useState([]);
